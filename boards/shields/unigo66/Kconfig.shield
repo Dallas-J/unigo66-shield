@@ -1,0 +1,5 @@
+# Copyright (c) 2024 Dallas Johnson
+# SPDX-License-Identifier: MIT
+
+config SHIELD_UNIGO66
+    def_bool $(shields_list_contains,unigo66)

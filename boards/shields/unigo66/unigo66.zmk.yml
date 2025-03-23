@@ -1,0 +1,8 @@
+file_format: "1"
+id: unigo66
+name: Unigo66
+type: shield
+url: https://github.com/Dallas-J/unigo66-shield
+requires: [pro_micro]
+features:
+  - keys

@@ -19,8 +19,6 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: bleuet_left
-  - board: nice_nano_v2
-    shield: bleuet_right
+    shield: unigo66
   - board: nice_nano_v2
     shield: settings_reset

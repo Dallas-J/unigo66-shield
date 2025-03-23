@@ -1,0 +1,9 @@
+# Copyright (c) 2024 Dallas Johnson
+# SPDX-License-Identifier: MIT
+
+if SHIELD_UNIGO66
+
+config ZMK_KEYBOARD_NAME
+    default "Unigo66"
+
+endif
