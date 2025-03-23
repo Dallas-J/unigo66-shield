@@ -1,0 +1,101 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/dynamic-macros.h>
+
+#define BASE 0
+#define LOWER 1
+
+/ {
+    behaviors {
+        bt_encoder: behavior_bt_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&bt BT_NXT>, <&bt BT_PRV>;
+        };
+        bt_lp: behavior_bt_lp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <1000>;
+            bindings = <&none>, <&bt>;
+        };
+    };
+
+    macros {
+        dm1: dyn-macro-1 {
+            compatible = "zmk,behavior-dynamic-macro";
+            label = "dynamic-macro-1";
+            #binding-cells = <1>;
+        };
+        dm2: dyn-macro-2 {
+            compatible = "zmk,behavior-dynamic-macro";
+            label = "dynamic-macro-2";
+            #binding-cells = <1>;
+        };
+    };
+
+    swap: swapper {
+        compatible = "zmk,behavior-tri-state";
+        label = "SWAPPER";
+        #binding-cells = <0>;
+        bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+        ignored-key-positions = <42 55>;
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+// ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓            ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓
+// ┃ ESC ┃  1  ┃  2  ┃  3  ┃  4  ┃  5  ┃PLAY1┃            ┃PLAY2┃  6  ┃  7  ┃  8  ┃  9  ┃  0  ┃  -  ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ TAB ┃  Q  ┃  W  ┃  E  ┃  R  ┃  T  ┃  `  ┃            ┃  [  ┃  Y  ┃  U  ┃  I  ┃  O  ┃  P  ┃  =  ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ CTRL┃  A  ┃  S  ┃  D  ┃  F  ┃  G  ┃  \  ┃            ┃  ]  ┃  H  ┃  J  ┃  K  ┃  L  ┃  ;  ┃  '  ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫<BRT+  VOL+>┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ SHFT┃  Z  ┃  X  ┃  C  ┃  V  ┃  B  ┃SLEEP┃┃          ┃┃MUTE ┃  N  ┃  M  ┃  ,  ┃  .  ┃  /  ┃SHFT ┃
+// ┗━━━━━┻━━━━━┻━━━━━┻━━━━━╋━━━━━╋━━━━━╋━━━━━┫<BRT-  VOL->┣━━━━━╋━━━━━╋━━━━━╋━━━━━┻━━━━━┻━━━━━┻━━━━━┛
+//                         ┃ LWR ┃ DEL ┃ SPC ┃            ┃ ENT ┃ BSP ┃ LWR ┃
+//                         ┗━━━━━┻━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┻━━━━━┛
+            bindings = <
+&kp ESC   &kp N1 &kp N2 &kp N3 &kp N4    &kp N5  &dm1 PLAY      &dm2 PLAY  &kp N6   &kp N7    &kp N8    &kp N9   &kp N0   &kp MINUS
+&kp TAB   &kp Q  &kp W  &kp E  &kp R     &kp T   &kp GRAVE      &kp LBKT   &kp Y    &kp U     &kp I     &kp O    &kp P    &kp EQUAL
+&kp LCTRL &kp A  &kp S  &kp D  &kp F     &kp G   &kp BSLH       &kp RBKT   &kp H    &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&kp LSHFT &kp Z  &kp X  &kp C  &kp V     &kp B   &kp LG(L)      &kp C_MUTE &kp N    &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
+                               &mo LOWER &kp DEL &kp SPACE      &kp ENTER  &kp BSPC &mo LOWER
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_layer {
+// ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓            ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓
+// ┃ ESC ┃  F1 ┃  F2 ┃  F3 ┃  F4 ┃  F5 ┃ REC1┃            ┃REC2 ┃ F6  ┃ F7  ┃ F8  ┃ F9  ┃ F10 ┃ F11 ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃AlTAB┃ WinQ┃ WinW┃ WinE┃ WinR┃ WinT┃  `  ┃            ┃  [  ┃WinY ┃WinU ┃  ↑  ┃WinO ┃WinP ┃ F12 ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ CTRL┃ WinA┃ WinS┃ WinD┃ WinF┃ WinG┃  \  ┃            ┃  ]  ┃WinH ┃  ←  ┃  ↓  ┃  →  ┃Win; ┃Win' ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫<BT+   VOL+>┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ SHFT┃ WinZ┃ WinX┃ WinC┃ WinV┃ WinB┃BTCLR┃┃          ┃┃MUTE ┃WinN ┃WinM ┃Win, ┃Win. ┃Win/ ┃SHFT ┃
+// ┗━━━━━┻━━━━━┻━━━━━┻━━━━━╋━━━━━╋━━━━━╋━━━━━┫<BT-   VOL->┣━━━━━╋━━━━━╋━━━━━╋━━━━━┻━━━━━┻━━━━━┻━━━━━┛
+//                         ┃ Win ┃AltDL┃ SPC ┃            ┃ ENT ┃ BSP ┃ Win ┃
+//                         ┗━━━━━┻━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┻━━━━━┛
+            bindings = <
+&trans &kp F1    &kp F2    &kp F3    &kp F4    &kp F5      &dm1 RECORD      &dm2 RECORD &kp F6    &kp F7    &kp F8    &kp F9      &kp F10   &kp F11
+&swap  &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &trans           &trans      &kp LG(Y) &kp LG(U) &kp UP    &kp LG(O)   &kp LG(P) &kp F12
+&trans &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &trans           &trans      &kp LG(H) &kp LEFT  &kp DOWN  &kp RIGHT   &trans    &trans
+&trans &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(B)   &bt_lp BT_CLR    &trans      &kp LG(N) &trans    &trans    &kp LG(DOT) &trans    &trans
+                                     &kp LGUI  &kp LA(DEL) &trans           &trans      &trans &kp RGUI
+            >;
+
+            sensor-bindings = <&bt_encoder &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+    };
+};

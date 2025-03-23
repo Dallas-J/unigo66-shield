@@ -1,0 +1,19 @@
+# Copyright (c) 2024 Dallas Johnson
+# SPDX-License-Identifier: MIT
+
+if SHIELD_BLEUET_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Bleuet"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_BLEUET_LEFT || SHIELD_BLEUET_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
