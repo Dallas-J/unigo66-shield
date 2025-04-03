@@ -21,6 +21,13 @@
             tapping-term-ms = <1000>;
             bindings = <&none>, <&bt>;
         };
+        rst_lp: behavior_rst_lp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <1000>;
+            bindings = <&kp>, <&kp>;
+        }
     };
 
     macros {
@@ -86,12 +93,12 @@
 //                               ┃ DEL ┃     ┃            ┃     ┃ BSP ┃
 //                               ┗━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┛
             bindings = <
-&bootloader   &kp F1    &kp F2    &kp F3    &kp F4    &kp F5      &dm1 RECORD      &dm2 RECORD &kp F6    &kp F7    &kp F8   &kp F9      &kp F10   &kp F11
-&swap         &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &trans           &trans      &kp LG(Y) &kp LG(U) &kp UP   &kp LG(O)   &kp LG(P) &kp F12
-&trans        &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &trans           &trans      &kp LG(H) &kp LEFT  &kp DOWN &kp RIGHT   &trans    &trans
-&trans        &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(B)                                &kp LG(N) &trans    &trans   &kp LG(DOT) &trans    &trans
-&bt_lp BT_CLR &trans    &trans                        &kp LGUI    &trans           &trans      &kp RGUI                     &trans      &trans    &trans
-                                                      &kp LA(DEL) &none            &none       &trans
+&rst_lp &sys_reset &bootloader &kp F1    &kp F2    &kp F3    &kp F4    &kp F5      &dm1 RECORD      &dm2 RECORD &kp F6    &kp F7    &kp F8   &kp F9      &kp F10   &kp F11
+&swap                          &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &trans           &trans      &kp LG(Y) &kp LG(U) &kp UP   &kp LG(O)   &kp LG(P) &kp F12
+&trans                         &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &trans           &trans      &kp LG(H) &kp LEFT  &kp DOWN &kp RIGHT   &trans    &trans
+&trans                         &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(B)                                &kp LG(N) &trans    &trans   &kp LG(DOT) &trans    &trans
+&bt_lp BT_CLR                  &trans    &trans                        &kp LGUI    &trans           &trans      &kp RGUI                     &trans      &trans    &trans
+                                                                        &kp LA(DEL) &none            &none       &trans
             >;
         };
     };
