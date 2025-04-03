@@ -27,7 +27,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <1000>;
             bindings = <&kp>, <&kp>;
-        }
+        };
     };
 
     macros {
