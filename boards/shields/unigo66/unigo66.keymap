@@ -95,12 +95,12 @@
 //                               ┃ Win ┃     ┃            ┃     ┃ Win ┃
 //                               ┗━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┛
             bindings = <
-&rst_lp 0 0   &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &dm1 RECORD      &dm2 RECORD &kp F6    &kp F7    &kp F8   &kp F9      &kp F10   &kp F11
-&swap         &kp LG(Q)    &kp LG(W)    &kp LG(E)    &kp LG(R)    &kp LG(T)    &trans           &trans      &kp LG(Y) &kp LG(U) &kp UP   &kp LG(O)   &kp LG(P) &kp F12
-&trans        &kp LG(A)    &kp LG(S)    &kp LG(D)    &kp LG(F)    &kp LG(G)    &trans           &trans      &kp LG(H) &kp LEFT  &kp DOWN &kp RIGHT   &trans    &trans
-&trans        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                              &kp LG(N) &trans    &trans   &kp LG(DOT) &trans    &trans
-&bt_lp BT_CLR &trans       &trans                                 &kp LA(DEL)  &trans           &trans      &trans                       &trans      &trans    &trans
-                                                                  &kp LGUI     &none            &none       &kp RGUI
+&rst_lp 0 0 &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &dm1 RECORD      &dm2 RECORD &kp F6    &kp F7    &kp F8   &kp F9      &kp F10   &kp F11
+&swap       &kp LG(Q)    &kp LG(W)    &kp LG(E)    &kp LG(R)    &kp LG(T)    &trans           &trans      &kp LG(Y) &kp LG(U) &kp UP   &kp LG(O)   &kp LG(P) &kp F12
+&trans      &kp LG(A)    &kp LG(S)    &kp LG(D)    &kp LG(F)    &kp LG(G)    &trans           &trans      &kp LG(H) &kp LEFT  &kp DOWN &kp RIGHT   &trans    &trans
+&trans      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                              &kp LG(N) &trans    &trans   &kp LG(DOT) &trans    &trans
+&bt_lp 0 0  &trans       &trans                                 &kp LA(DEL)  &trans           &trans      &trans                       &trans      &trans    &trans
+                                                                &kp LGUI     &none            &none       &kp RGUI
             >;
         };
     };
