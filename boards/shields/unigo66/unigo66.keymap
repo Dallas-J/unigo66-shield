@@ -7,22 +7,23 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/dynamic-macros.h>
 #include <dt-bindings/zmk/outputs.h>
 
 #define BASE 0
 #define LOWER 1
+#define LOWEST 2
 
 / {
+    combos {
+        compatible = "zmk,combos";
+        combo_win {
+            timeout-ms = <500>;
+            key-positions = <56 61>;
+            bindings = <&kp LGUI>;
+        };
+    };
+
     macros {
-        dm1: dyn-macro-1 {
-            compatible = "zmk,behavior-dynamic-macro";
-            #binding-cells = <1>;
-        };
-        dm2: dyn-macro-2 {
-            compatible = "zmk,behavior-dynamic-macro";
-            #binding-cells = <1>;
-        };
         bt_clr: bt-macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -31,7 +32,7 @@
         bt_0: bt-sel-0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 0>;
+            bindings = <&macro_tap &out OUT_USB &bt BT_SEL 0>;
         };
         bt_1: bt-sel-1 {
             compatible = "zmk,behavior-macro";
@@ -47,6 +48,11 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 3>;
+        };
+        bt_4: bt-sel-4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 4>;
         };
     };
 
@@ -79,7 +85,7 @@
 
         default_layer {
 // ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓            ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓
-// ┃ ESC ┃  1  ┃  2  ┃  3  ┃  4  ┃  5  ┃PLAY1┃            ┃PLAY2┃  6  ┃  7  ┃  8  ┃  9  ┃  0  ┃  -  ┃
+// ┃ ESC ┃  1  ┃  2  ┃  3  ┃  4  ┃  5  ┃ HOME┃            ┃ END ┃  6  ┃  7  ┃  8  ┃  9  ┃  0  ┃  -  ┃
 // ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
 // ┃ TAB ┃  Q  ┃  W  ┃  E  ┃  R  ┃  T  ┃  `  ┃            ┃  [  ┃  Y  ┃  U  ┃  I  ┃  O  ┃  P  ┃  =  ┃
 // ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫     ┃            ┃     ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
@@ -92,36 +98,60 @@
 //                               ┃ LWR ┃     ┃            ┃     ┃ LWR ┃
 //                               ┗━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┛
             bindings = <
-&kp ESC   &kp N1       &kp N2       &kp N3 &kp N4 &kp N5    &dm1 PLAY      &dm2 PLAY  &kp N6    &kp N7 &kp N8    &kp N9       &kp N0       &kp MINUS
-&kp TAB   &kp Q        &kp W        &kp E  &kp R  &kp T     &kp GRAVE      &kp LBKT   &kp Y     &kp U  &kp I     &kp O        &kp P        &kp EQUAL
-&kp LCTRL &kp A        &kp S        &kp D  &kp F  &kp G     &kp BSLH       &kp RBKT   &kp H     &kp J  &kp K     &kp L        &kp SEMI     &kp SQT
-&kp LSHFT &kp Z        &kp X        &kp C  &kp V  &kp B                               &kp N     &kp M  &kp COMMA &kp DOT      &kp FSLH     &kp RSHFT
-&kp LG(L) &kp C_BRI_DN &kp C_BRI_UP               &kp DEL   &kp SPACE      &kp ENTER  &kp BSPC                   &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE
-                                                  &mo LOWER &none          &none      &mo LOWER
+&kp ESC   &kp N1       &kp N2       &kp N3 &kp N4 &kp N5    &kp HOME       &kp END   &kp N6    &kp N7 &kp N8    &kp N9       &kp N0       &kp MINUS
+&kp TAB   &kp Q        &kp W        &kp E  &kp R  &kp T     &kp GRAVE      &kp LBKT  &kp Y     &kp U  &kp I     &kp O        &kp P        &kp EQUAL
+&kp LCTRL &kp A        &kp S        &kp D  &kp F  &kp G     &kp BSLH       &kp RBKT  &kp H     &kp J  &kp K     &kp L        &kp SEMI     &kp SQT
+&kp LSHFT &kp Z        &kp X        &kp C  &kp V  &kp B                              &kp N     &kp M  &kp COMMA &kp DOT      &kp FSLH     &kp RSHFT
+&kp LG(L) &kp C_BRI_DN &kp C_BRI_UP               &kp DEL   &kp SPACE      &kp ENTER &kp BSPC                   &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE
+                                                  &mo LOWER &none          &none     &mo LOWER
             >;
         };
 
         lower_layer {
 // ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓            ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓
-// ┃ RST ┃  F1 ┃  F2 ┃  F3 ┃  F4 ┃  F5 ┃ REC1┃            ┃REC2 ┃ F6  ┃ F7  ┃ F8  ┃ F9  ┃ F10 ┃ F11 ┃
+// ┃ RST ┃Win1 ┃Win2 ┃Win3 ┃Win4 ┃Win5 ┃ REC1┃            ┃REC2 ┃Win6 ┃Win7 ┃Win8 ┃Win9 ┃Win0 ┃  -  ┃
 // ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
-// ┃AlTAB┃ WinQ┃ WinW┃ WinE┃ WinR┃ WinT┃  `  ┃            ┃  [  ┃WinY ┃WinU ┃  ↑  ┃WinO ┃WinP ┃ F12 ┃
+// ┃AlTAB┃ WinQ┃ WinW┃ WinE┃ WinR┃ WinT┃  `  ┃            ┃  [  ┃WinY ┃WinU ┃  ↑  ┃WinO ┃WinP ┃  =  ┃
 // ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫     ┃            ┃     ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
-// ┃ CTRL┃ WinA┃ WinS┃ WinD┃ WinF┃ WinG┣━━━━━┫            ┣━━━━━┫WinH ┃  ←  ┃  ↓  ┃  →  ┃Win; ┃Win' ┃
+// ┃ CTRL┃ WinA┃ WinS┃ WinD┃ WinF┃ WinG┣━━━━━┫            ┣━━━━━┫WinH ┃  ←  ┃  ↓  ┃  →  ┃  ;  ┃  '  ┃
 // ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┃  \  ┃            ┃  ]  ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
-// ┃ SHFT┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃ BT5 ┃     ┃            ┃     ┃WinN ┃WinM ┃Win, ┃EMOJI┃Win/ ┃SHFT ┃
+// ┃ SHFT┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃ BT5 ┃     ┃            ┃     ┃WinN ┃WinM ┃  ,  ┃EMOJI┃  /  ┃SHFT ┃
 // ┣━━━━━╋━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━╋━━━━━┫
 // ┃BTCLR┃ BRT-┃ BRT+┃           ┃AltDL┃     ┃            ┃     ┃ BSP ┃           ┃VOL- ┃VOL+ ┃MUTE ┃
 // ┗━━━━━┻━━━━━┻━━━━━┛           ┣━━━━━┫ SPC ┃            ┃ ENT ┣━━━━━┫           ┗━━━━━┻━━━━━┻━━━━━┛
 //                               ┃ Win ┃     ┃            ┃     ┃ Win ┃
 //                               ┗━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┛
             bindings = <
-&rst_lp 0 0 &kp F1       &kp F2    &kp F3    &kp F4    &kp F5       &dm1 RECORD      &dm2 RECORD &kp F6    &kp F7    &kp F8   &kp F9      &kp F10   &kp F11
-&swap       &kp LG(Q)    &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)    &trans           &trans      &kp LG(Y) &kp LG(U) &kp UP   &kp LG(O)   &kp LG(P) &kp F12
-&trans      &kp LG(A)    &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)    &trans           &trans      &kp LG(H) &kp LEFT  &kp DOWN &kp RIGHT   &trans    &trans
-&trans      &out OUT_USB &bt_0     &bt_1     &bt_2     &bt_3                                     &kp LG(N) &trans    &trans   &kp LA(SPC) &trans    &trans
-&bt_lp 0 0  &trans       &trans                        &kp LA(DEL)  &trans           &trans      &trans                       &trans      &trans    &trans
-                                                       &kp LGUI     &none            &none       &kp RGUI
+&rst_lp 0 0 &kp LG(1) &kp LG(2) &kp LG(3) &kp LG(4) &kp LG(5)   &trans      &trans &kp LG(6)  &kp LG(7) &kp LG(8) &kp LG(9)   &kp LG(0) &trans
+&swap       &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &trans      &trans &kp LG(Y)  &kp LG(U) &kp UP    &kp LG(O)   &kp LG(P) &trans
+&trans      &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &trans      &trans &kp LG(H)  &kp LEFT  &kp DOWN  &kp RIGHT   &trans    &trans
+&trans      &bt_0     &bt_1     &bt_2     &bt_3     &bt_4                          &kp LG(N)  &trans    &trans    &kp LA(SPC) &trans    &trans
+&bt_lp 0 0  &trans    &trans                        &kp LA(DEL) &trans      &trans &trans                         &trans      &trans    &trans
+                                                    &kp LOWEST  &none       &none  &kp LOWEST
+            >;
+        };
+
+        lowest_layer {
+// ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓            ┏━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┓
+// ┃ RST ┃  F1 ┃  F2 ┃  F3 ┃  F4 ┃  F5 ┃ HOME┃            ┃ END ┃ F6  ┃ F7  ┃ F8  ┃ F9  ┃ F10 ┃ F11 ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃AlTAB┃ WinQ┃ WinW┃ WinE┃ WinR┃ WinT┃  `  ┃            ┃  [  ┃WinY ┃WinU ┃  ↑  ┃WinO ┃WinP ┃ F12 ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫     ┃            ┃     ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ CTRL┃ WinA┃ WinS┃ WinD┃ WinF┃ WinG┣━━━━━┫            ┣━━━━━┫WinH ┃  ←  ┃  ↓  ┃  →  ┃  ;  ┃  '  ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┃  \  ┃            ┃  ]  ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃ SHFT┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃ BT5 ┃     ┃            ┃     ┃WinN ┃WinM ┃  ,  ┃EMOJI┃  /  ┃SHFT ┃
+// ┣━━━━━╋━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━╋━━━━━┫
+// ┃BTCLR┃ BRT-┃ BRT+┃           ┃AltDL┃     ┃            ┃     ┃ BSP ┃           ┃VOL- ┃VOL+ ┃MUTE ┃
+// ┗━━━━━┻━━━━━┻━━━━━┛           ┣━━━━━┫ SPC ┃            ┃ ENT ┣━━━━━┫           ┗━━━━━┻━━━━━┻━━━━━┛
+//                               ┃ Win ┃     ┃            ┃     ┃ Win ┃
+//                               ┗━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┛
+            bindings = <
+&trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &trans      &trans &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11
+&trans &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans  &kp F12
+&trans &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans  &trans
+&trans &trans &trans &trans &trans &trans                    &trans &trans &trans &trans &trans  &trans
+&trans &trans &trans               &trans &trans      &trans &trans               &trans &trans  &trans
+                                   &trans &none       &none  &trans
             >;
         };
     };
