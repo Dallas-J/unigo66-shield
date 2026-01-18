@@ -18,7 +18,7 @@
         compatible = "zmk,combos";
         combo_win {
             timeout-ms = <500>;
-            key-positions = <56 61>;
+            key-positions = <64 67>;
             bindings = <&kp LGUI>;
         };
     };
