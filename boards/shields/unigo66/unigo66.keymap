@@ -122,12 +122,12 @@
 //                                 ┃ Win ┃     ┃            ┃     ┃ Win ┃
 //                                 ┗━━━━━┻━━━━━┛            ┗━━━━━┻━━━━━┛
             bindings = <
-&rst_lp 0 0 &kp LG(1) &kp LG(2) &kp LG(3) &kp LG(4) &kp LG(5)   &trans      &trans &kp LG(6)  &kp LG(7) &kp LG(8) &kp LG(9)   &kp LG(0) &trans
-&swap       &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &trans      &trans &kp LG(Y)  &kp LG(U) &kp UP    &kp LG(O)   &kp LG(P) &trans
-&trans      &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &trans      &trans &kp LG(H)  &kp LEFT  &kp DOWN  &kp RIGHT   &trans    &trans
-&trans      &bt_0     &bt_1     &bt_2     &bt_3     &bt_4                          &kp LG(N)  &trans    &trans    &kp LA(SPC) &trans    &trans
-&bt_lp 0 0  &trans    &trans                        &kp LA(DEL) &trans      &trans &trans                         &trans      &trans    &trans
-                                                    &kp LOWEST  &none       &none  &kp LOWEST
+&rst_lp 0 0 &kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)  &trans      &trans &kp LG(N6) &kp LG(N7) &kp LG(N8) &kp LG(N9)  &kp LG(N0) &trans
+&swap       &kp LG(Q)  &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)   &trans      &trans &kp LG(Y)  &kp LG(U)  &kp UP     &kp LG(O)   &kp LG(P)  &trans
+&trans      &kp LG(A)  &kp LG(S)  &kp LG(D)  &kp LG(F)  &kp LG(G)   &trans      &trans &kp LG(H)  &kp LEFT   &kp DOWN   &kp RIGHT   &trans     &trans
+&trans      &bt_0      &bt_1      &bt_2      &bt_3      &bt_4                          &kp LG(N)  &trans     &trans     &kp LA(SPC) &trans     &trans
+&bt_lp 0 0  &trans     &trans                           &kp LA(DEL) &trans      &trans &trans                           &trans      &trans     &trans
+                                                        &kp LOWEST  &none       &none  &kp LOWEST
             >;
         };
 
