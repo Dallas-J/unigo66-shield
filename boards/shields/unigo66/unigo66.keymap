@@ -23,27 +23,27 @@
         bt_0: bt-sel-0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_USB &bt ADV_ON &bt BT_SEL 0 &bt ADV_OFF &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4>;
+            bindings = <&macro_tap &out OUT_USB &bt BT_ADV_ON &bt BT_SEL 0 &bt BT_ADV_OFF &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4>;
         };
         bt_1: bt-sel-1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt ADV_ON &bt BT_SEL 1 &bt ADV_OFF &bt BT_DISC 0 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_ADV_ON &bt BT_SEL 1 &bt BT_ADV_OFF &bt BT_DISC 0 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4>;
         };
         bt_2: bt-sel-2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt ADV_ON &bt BT_SEL 2 &bt ADV_OFF &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 3 &bt BT_DISC 4>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_ADV_ON &bt BT_SEL 2 &bt BT_ADV_OFF &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 3 &bt BT_DISC 4>;
         };
         bt_3: bt-sel-3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt ADV_ON &bt BT_SEL 3 &bt ADV_OFF &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 4>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_ADV_ON &bt BT_SEL 3 &bt BT_ADV_OFF &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 4>;
         };
         bt_4: bt-sel-4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt ADV_ON &bt BT_SEL 4 &bt ADV_OFF &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_ADV_ON &bt BT_SEL 4 &bt BT_ADV_OFF &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3>;
         };
     };
 
