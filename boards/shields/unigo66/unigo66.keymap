@@ -23,27 +23,27 @@
         bt_0: bt-sel-0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_USB &bt BT_SEL 0>;
+            bindings = <&macro_tap &out OUT_USB &bt BT_SEL 0 &bt BT_DISC>;
         };
         bt_1: bt-sel-1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 1>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 1 &bt BT_DISC>;
         };
         bt_2: bt-sel-2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 2>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 2 &bt BT_DISC>;
         };
         bt_3: bt-sel-3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 3>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 3 &bt BT_DISC>;
         };
         bt_4: bt-sel-4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 4>;
+            bindings = <&macro_tap &out OUT_BLE &bt BT_SEL 4 &bt BT_DISC>;
         };
     };
 
@@ -106,7 +106,7 @@
 // ┣━━━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫     ┃            ┃     ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━━━┫
 // ┃  CTRL ┃ WinA┃ WinS┃ WinD┃ WinF┃ WinG┣━━━━━┫            ┣━━━━━┫WinH ┃  ←  ┃  ↓  ┃  →  ┃  ;  ┃   '   ┃
 // ┣━━━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┃  \  ┃            ┃  ]  ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━━━┫
-// ┃  SHFT ┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃ BT5 ┃     ┃            ┃     ┃WinN ┃WinM ┃  ,  ┃EMOJI┃  /  ┃ SHFT  ┃
+// ┃  SHFT ┃ BT0 ┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃     ┃            ┃     ┃WinN ┃WinM ┃  ,  ┃EMOJI┃  /  ┃ SHFT  ┃
 // ┗━┳━━━━━╋━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━╋━━━━━┳━┛
 //   ┃BTCLR┃ BRT-┃ BRT+┃           ┃AltDL┃     ┃            ┃     ┃ BSP ┃           ┃VOL- ┃VOL+ ┃MUTE ┃
 //   ┗━━━━━┻━━━━━┻━━━━━┛           ┣━━━━━┫ SPC ┃            ┃ ENT ┣━━━━━┫           ┗━━━━━┻━━━━━┻━━━━━┛
@@ -130,7 +130,7 @@
 // ┣━━━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┫     ┃            ┃     ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━━━┫
 // ┃  CTRL ┃ WinA┃ WinS┃ WinD┃ WinF┃ WinG┣━━━━━┫            ┣━━━━━┫WinH ┃  ←  ┃  ↓  ┃  →  ┃  ;  ┃   '   ┃
 // ┣━━━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━┃  \  ┃            ┃  ]  ┣━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━━━┫
-// ┃  SHFT ┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃ BT5 ┃     ┃            ┃     ┃WinN ┃WinM ┃  ,  ┃EMOJI┃  /  ┃ SHFT  ┃
+// ┃  SHFT ┃ BT0 ┃ BT1 ┃ BT2 ┃ BT3 ┃ BT4 ┃     ┃            ┃     ┃WinN ┃WinM ┃  ,  ┃EMOJI┃  /  ┃ SHFT  ┃
 // ┗━┳━━━━━╋━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━┫            ┣━━━━━╋━━━━━╋━━━━━┻━━━━━╋━━━━━╋━━━━━╋━━━━━┳━┛
 //   ┃BTCLR┃ BRT-┃ BRT+┃           ┃AltDL┃     ┃            ┃     ┃ BSP ┃           ┃VOL- ┃VOL+ ┃MUTE ┃
 //   ┗━━━━━┻━━━━━┻━━━━━┛           ┣━━━━━┫ SPC ┃            ┃ ENT ┣━━━━━┫           ┗━━━━━┻━━━━━┻━━━━━┛
